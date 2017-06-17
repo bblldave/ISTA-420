@@ -1,0 +1,129 @@
+﻿@model IEnumerable<BaseballApp.Models.stat>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.G)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.R)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.H)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondBase)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThirdBase)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RBI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.K)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AVG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SLG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OBP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OPS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Player.LastName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.G)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.R)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.H)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecondBase)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThirdBase)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RBI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.K)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AVG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SLG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OBP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OPS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Player.LastName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PlayerID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PlayerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PlayerID })
+        </td>
+    </tr>
+}
+
+</table>
