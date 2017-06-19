@@ -20,6 +20,7 @@ User Requirements
 1. Players can save personal info
 1. Players can edit info after saving
 1. Users can update passwords
+1. Users can recover passwords
 1. Coaches can update or change calendar events
 
 
