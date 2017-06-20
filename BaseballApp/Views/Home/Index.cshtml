@@ -2,16 +2,10 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Homerun League</h1>
-    <p class="lead">Active Baseball league in the Fort Benning Area.</p>
-</div>
-<div class="row">
-    <div class=" col-lg-8">
-        <img src="~/Content/HomeField.jpg" alt="A baseball Stadium" /> 
-    </div>
-    
-</div>
+
+
+<div class="jumbotron"></div>
+
 
 
 <div class="row">
@@ -22,7 +16,7 @@
             for serious players and fans.
         </p>
         <div>
-            @Html.ActionLink("List of Teams", "Index", "Teams")
+            <p><a class="btn btn-default" href="~/Teams/Index"> View Teams &raquo;</a></p>
         </div>
     </div>
     <div class="col-md-4">
@@ -35,12 +29,54 @@
     <div class="col-md-4">
         <h2>Apply Now!</h2>
         <p>Interested in playing for one of our teams? If so click below to get added to the roster.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Apply Now! &raquo;</a></p>
+        <p><a class="btn btn-default" href="~/Players/Create">Apply Now! &raquo;</a></p>
     </div>
+   
 </div>
+<div class="upcomingGames">
+    <h2>Upcoming Games</h2>
+    
+            <table class="table">
+                <tr>
+                    <th>
+                        <p> @DateTime.UtcNow</p>
+                    </th>
+                    <th>
+                        <p>Location</p>
+                    </th>
+                    <th>
+                        <p>@DateTime.Now</p>
+                    </th>
+                    <th>
+                        <p>Location</p>
+                    </th>
+                </tr>
+                
+                
+                    <tr>
+                        <td>
+                            <p>Team1 vs Team2</p>
+                        </td>
+                        <td>
+                           <p>Random Field</p>
+                        </td>
+                        <td>
+                            <p>Team3 vs Team4</p>
+                        </td>
+                        <td>
+                            <p>Random Field</p>
+                        </td>
+                    </tr>
+                
+            </table >
 
 
-<div class="month">
+</div >
+
+
+
+
+@*<div class="month">
     <ul>
         <li class="prev">&#10094;</li>
         <li class="next">&#10095;</li>
@@ -91,4 +127,4 @@
     <li>29</li>
     <li>30</li>
     <li>31</li>
-</ul>
+</ul>*@

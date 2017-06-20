@@ -6076,13 +6076,15 @@ a.badge:focus {
     padding-top: 30px;
     padding-bottom: 30px;
     margin-bottom: 30px;
+    background-size:cover;
+    height: 350px;
     color: inherit;
-    background-image: url("~/Content/HomeField.jpg");
+    background-image: url("/Content/HomeField.jpg");
 }
 
     .jumbotron h1,
     .jumbotron .h1 {
-        color: inherit;
+        color: #13178a;
     }
 
     .jumbotron p {
@@ -8618,3 +8620,7 @@ body {
             background: #1abc9c;
             color: white !important
         }
+
+.upcomingGames{
+    border:10px solid red;
+}
