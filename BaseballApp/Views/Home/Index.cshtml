@@ -4,75 +4,110 @@
 
 
 <div class="jumbotron"></div>
-
-
-
 <div class="row">
+    @*<div class="col-md-4">
+            <h2>Our Teams</h2>
+            <p>
+                Homerun League has many teams that play in a tornament style bracket. With multiple games weekly, Homerun league is the supreme league
+                for serious players and fans.
+            </p>
+            <div>
+                <p><a class="btn btn-primary" href="~/Teams/Index"> View Teams &raquo;</a></p>
+            </div>
+        </div>*@
     <div class="col-md-4">
-        <h2>Our Teams</h2>
-        <p>
-            Homerun League has many teams that play in a tornament style bracket. With multiple games weekly, Homerun league is the supreme league
-            for serious players and fans.
-        </p>
-        <div>
-            <p><a class="btn btn-default" href="~/Teams/Index"> View Teams &raquo;</a></p>
+        <div class="card">
+            <div class="headingPic">
+                <img src="~/Content/rsz_baseballteam.jpg" alt="Baseball Team" style="width:100%">
+            </div>
+            <div class="container1">
+                <h1>Teams</h1>
+                <p class="title1">Homerun League has many teams that play in a tournament style bracket. Multiple games per week!</p>
+                <p><a class="btn btn-primary" href="~/Teams/Index"> View Teams &raquo;</a></p>
+            </div>
         </div>
     </div>
+    @*<div class="col-md-4">
+            <h2>Calendar</h2>
+            <p>This calendar shows the games that are currently scheduled. It includes all teams and fields. If you want the schedule for
+               a specific team, please use the Team's calendar.
+            </p>
+            <p><a class="btn btn-primary" href="https://go.microsoft.com/fwlink/?LinkId=301866">View Calendar &raquo;</a></p>
+        </div>*@
     <div class="col-md-4">
-        <h2>Calendar</h2>
-        <p>This calendar shows the games that are currently scheduled. It includes all teams and fields. If you want the schedule for
-           a specific team, please use the Team's calendar.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">View Calendar &raquo;</a></p>
+        <div class="card">
+            <div class="headingPic">
+                <img src="~/Content/rsz_tournamentbracket.jpg" alt="Tournament Bracket" style="width:100%">
+            </div>
+            <div class="container1">
+                <h1>Schedule</h1>
+                <p class="title1">
+                    View the schedule for the entire league. Find out when your favorite teams are playing!
+                </p>
+                <p><a class="btn btn-primary" href="~/Schedules/Index"> View Schedule &raquo;</a></p>
+            </div>
+        </div>
     </div>
+    @*<div class="col-md-4">
+            <h2>Apply Now!</h2>
+            <p>Interested in playing for one of our teams? If so click below to get added to the roster.</p>
+            <p><a class="btn btn-primary" href="~/Players/Create">Apply Now! &raquo;</a></p>
+        </div>*@
     <div class="col-md-4">
-        <h2>Apply Now!</h2>
-        <p>Interested in playing for one of our teams? If so click below to get added to the roster.</p>
-        <p><a class="btn btn-default" href="~/Players/Create">Apply Now! &raquo;</a></p>
-    </div>
-   
+        <div class="card">
+            <div class="headingPic">
+                <img src="~/Content/rsz_baseballglove.jpg" alt="Baseball Glove" style="width:100%">
+            </div>
+            <div class="container1">
+                <h1>Apply Now!</h1>
+                <p class="title1">
+                    Interested in playing for one of our teams? If so click below to get added to the roster.
+                </p>
+                <p><a class="btn btn-primary" href="~/Players/Create"> Apply Now! &raquo;</a></p>
+            </div>
+        </div>
+    </div> 
 </div>
+
+
+
 <div class="upcomingGames">
     <h2>Upcoming Games</h2>
     
-    <table class="table">
+    <table class="table table-striped">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Date)
+                <p>Away</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Time)
+               <p>Home</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Location)
+                <p>Date</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Team.TeamName)
+                <p>Time</p>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Team3.TeamName)
-            </th>
-            <th></th>
+            
+           
         </tr>
 
         @foreach (var item in Model)
         {
             <tr>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Team.TeamName)
+                </td>
+                <td>
+                   @Html.DisplayFor(modelItem => item.Team3.TeamName)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Time)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Location)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Team.TeamName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Team3.TeamName)
-                </td>
+                
                
             </tr>
         }
