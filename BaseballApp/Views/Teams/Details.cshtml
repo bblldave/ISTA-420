@@ -34,22 +34,8 @@
             @Html.DisplayFor(model => model.CoachId)
         </dd>
 
-        <dt>
-            Roster:
-        </dt>
-        @foreach(var item in Model.Players)
-        {
-            <dd>
-                @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName) @Html.DisplayFor(modelItem => item.Position) 
-            </dd>
-            
-        }
     </dl>
 </div>
-
-
-
-
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Team1 }) |
     @Html.ActionLink("Back to List", "Index")

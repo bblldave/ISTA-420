@@ -12,15 +12,16 @@ namespace BaseballApp.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Player
+    public partial class Schedule
     {
-        public int playerID { get; set; }
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public string Position { get; set; }
-        public string Team { get; set; }
+        public string Team1 { get; set; }
+        public string Team2 { get; set; }
+        public string Date { get; set; }
+        public string Time { get; set; }
+        public string Location { get; set; }
+        public long gameId { get; set; }
     
-        public virtual stat stat { get; set; }
-        public virtual Team Team1 { get; set; }
+        public virtual Team Team { get; set; }
+        public virtual Team Team3 { get; set; }
     }
 }

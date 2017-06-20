@@ -1,6 +1,5 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@model IEnumerable<BaseballApp.Models.Schedule>
+
 
 
 
@@ -36,42 +35,52 @@
 <div class="upcomingGames">
     <h2>Upcoming Games</h2>
     
-            <table class="table">
-                <tr>
-                    <th>
-                        <p> @DateTime.UtcNow</p>
-                    </th>
-                    <th>
-                        <p>Location</p>
-                    </th>
-                    <th>
-                        <p>@DateTime.Now</p>
-                    </th>
-                    <th>
-                        <p>Location</p>
-                    </th>
-                </tr>
-                
-                
-                    <tr>
-                        <td>
-                            <p>Team1 vs Team2</p>
-                        </td>
-                        <td>
-                           <p>Random Field</p>
-                        </td>
-                        <td>
-                            <p>Team3 vs Team4</p>
-                        </td>
-                        <td>
-                            <p>Random Field</p>
-                        </td>
-                    </tr>
-                
-            </table >
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Team.TeamName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Team3.TeamName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Team.TeamName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Team3.TeamName)
+                </td>
+               
+            </tr>
+        }
+    </table>
 
 
 </div >
+
 
 
 

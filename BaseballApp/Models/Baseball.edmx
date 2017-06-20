@@ -15,6 +15,17 @@
           <Property Name="Position" Type="varchar" MaxLength="50" />
           <Property Name="Team" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="gameId" />
+          </Key>
+          <Property Name="Team1" Type="varchar" MaxLength="50" />
+          <Property Name="Team2" Type="varchar" MaxLength="50" />
+          <Property Name="Date" Type="varchar" MaxLength="50" />
+          <Property Name="Time" Type="varchar" MaxLength="50" />
+          <Property Name="Location" Type="varchar" MaxLength="50" />
+          <Property Name="gameId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
         <EntityType Name="stats">
           <Key>
             <PropertyRef Name="PlayerID" />
@@ -46,6 +57,18 @@
           <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CoachId" Type="int" />
         </EntityType>
+        <Association Name="FK_Players_stats">
+          <End Role="stats" Type="Self.stats" Multiplicity="1" />
+          <End Role="Players" Type="Self.Players" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="stats">
+              <PropertyRef Name="PlayerID" />
+            </Principal>
+            <Dependent Role="Players">
+              <PropertyRef Name="playerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Players_Teams">
           <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
           <End Role="Players" Type="Self.Players" Multiplicity="*" />
@@ -58,29 +81,50 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_stats_Players">
-          <End Role="Players" Type="Self.Players" Multiplicity="1" />
-          <End Role="stats" Type="Self.stats" Multiplicity="0..1" />
+        <Association Name="FK_Schedule_Teams">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Players">
-              <PropertyRef Name="playerID" />
+            <Principal Role="Teams">
+              <PropertyRef Name="Team" />
             </Principal>
-            <Dependent Role="stats">
-              <PropertyRef Name="PlayerID" />
+            <Dependent Role="Schedule">
+              <PropertyRef Name="Team1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Teams1">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Team" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="Team2" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="BaseballProjectModelStoreContainer">
           <EntitySet Name="Players" EntityType="Self.Players" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="stats" EntityType="Self.stats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Players_stats" Association="Self.FK_Players_stats">
+            <End Role="stats" EntitySet="stats" />
+            <End Role="Players" EntitySet="Players" />
+          </AssociationSet>
           <AssociationSet Name="FK_Players_Teams" Association="Self.FK_Players_Teams">
             <End Role="Teams" EntitySet="Teams" />
             <End Role="Players" EntitySet="Players" />
           </AssociationSet>
-          <AssociationSet Name="FK_stats_Players" Association="Self.FK_stats_Players">
-            <End Role="Players" EntitySet="Players" />
-            <End Role="stats" EntitySet="stats" />
+          <AssociationSet Name="FK_Schedule_Teams" Association="Self.FK_Schedule_Teams">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Teams1" Association="Self.FK_Schedule_Teams1">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Schedule" EntitySet="Schedule" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -97,8 +141,21 @@
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Team" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="stat" Relationship="Self.FK_Players_stats" FromRole="Players" ToRole="stats" />
           <NavigationProperty Name="Team1" Relationship="Self.FK_Players_Teams" FromRole="Players" ToRole="Teams" />
-          <NavigationProperty Name="stat" Relationship="Self.FK_stats_Players" FromRole="Players" ToRole="stats" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="gameId" />
+          </Key>
+          <Property Name="Team1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Team2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gameId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Team" Relationship="Self.FK_Schedule_Teams" FromRole="Schedule" ToRole="Teams" />
+          <NavigationProperty Name="Team3" Relationship="Self.FK_Schedule_Teams1" FromRole="Schedule" ToRole="Teams" />
         </EntityType>
         <EntityType Name="stat">
           <Key>
@@ -121,7 +178,7 @@
           <Property Name="SLG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="OBP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="OPS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Player" Relationship="Self.FK_stats_Players" FromRole="stats" ToRole="Players" />
+          <NavigationProperty Name="Player" Relationship="Self.FK_Players_stats" FromRole="stats" ToRole="Players" />
         </EntityType>
         <EntityType Name="Team">
           <Key>
@@ -132,7 +189,21 @@
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CoachId" Type="Int32" />
           <NavigationProperty Name="Players" Relationship="Self.FK_Players_Teams" FromRole="Teams" ToRole="Players" />
+          <NavigationProperty Name="Schedules" Relationship="Self.FK_Schedule_Teams" FromRole="Teams" ToRole="Schedule" />
+          <NavigationProperty Name="Schedules1" Relationship="Self.FK_Schedule_Teams1" FromRole="Teams" ToRole="Schedule" />
         </EntityType>
+        <Association Name="FK_Players_stats">
+          <End Role="stats" Type="Self.stat" Multiplicity="1" />
+          <End Role="Players" Type="Self.Player" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="stats">
+              <PropertyRef Name="PlayerID" />
+            </Principal>
+            <Dependent Role="Players">
+              <PropertyRef Name="playerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Players_Teams">
           <End Role="Teams" Type="Self.Team" Multiplicity="1" />
           <End Role="Players" Type="Self.Player" Multiplicity="*" />
@@ -145,29 +216,50 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_stats_Players">
-          <End Role="Players" Type="Self.Player" Multiplicity="1" />
-          <End Role="stats" Type="Self.stat" Multiplicity="0..1" />
+        <Association Name="FK_Schedule_Teams">
+          <End Role="Teams" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Players">
-              <PropertyRef Name="playerID" />
+            <Principal Role="Teams">
+              <PropertyRef Name="Team1" />
             </Principal>
-            <Dependent Role="stats">
-              <PropertyRef Name="PlayerID" />
+            <Dependent Role="Schedule">
+              <PropertyRef Name="Team1" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BaseballProjectEntities4" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK_Schedule_Teams1">
+          <End Role="Teams" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Team1" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="Team2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BaseballProjectEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Players" EntityType="Self.Player" />
+          <EntitySet Name="Schedules" EntityType="Self.Schedule" />
           <EntitySet Name="stats" EntityType="Self.stat" />
           <EntitySet Name="Teams" EntityType="Self.Team" />
+          <AssociationSet Name="FK_Players_stats" Association="Self.FK_Players_stats">
+            <End Role="stats" EntitySet="stats" />
+            <End Role="Players" EntitySet="Players" />
+          </AssociationSet>
           <AssociationSet Name="FK_Players_Teams" Association="Self.FK_Players_Teams">
             <End Role="Teams" EntitySet="Teams" />
             <End Role="Players" EntitySet="Players" />
           </AssociationSet>
-          <AssociationSet Name="FK_stats_Players" Association="Self.FK_stats_Players">
-            <End Role="Players" EntitySet="Players" />
-            <End Role="stats" EntitySet="stats" />
+          <AssociationSet Name="FK_Schedule_Teams" Association="Self.FK_Schedule_Teams">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Teams1" Association="Self.FK_Schedule_Teams1">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Schedule" EntitySet="Schedules" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -175,7 +267,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BaseballProjectModelStoreContainer" CdmEntityContainer="BaseballProjectEntities4">
+        <EntityContainerMapping StorageEntityContainer="BaseballProjectModelStoreContainer" CdmEntityContainer="BaseballProjectEntities">
           <EntitySetMapping Name="Players">
             <EntityTypeMapping TypeName="BaseballProjectModel.Player">
               <MappingFragment StoreEntitySet="Players">
@@ -184,6 +276,18 @@
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Position" ColumnName="Position" />
                 <ScalarProperty Name="Team" ColumnName="Team" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedules">
+            <EntityTypeMapping TypeName="BaseballProjectModel.Schedule">
+              <MappingFragment StoreEntitySet="Schedule">
+                <ScalarProperty Name="Team1" ColumnName="Team1" />
+                <ScalarProperty Name="Team2" ColumnName="Team2" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

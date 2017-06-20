@@ -18,6 +18,8 @@ namespace BaseballApp.Models
         public Team()
         {
             this.Players = new HashSet<Player>();
+            this.Schedules = new HashSet<Schedule>();
+            this.Schedules1 = new HashSet<Schedule>();
         }
     
         public string Team1 { get; set; }
@@ -27,5 +29,9 @@ namespace BaseballApp.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Player> Players { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Schedule> Schedules { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Schedule> Schedules1 { get; set; }
     }
 }

@@ -13,10 +13,10 @@ namespace BaseballApp.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BaseballProjectEntities4 : DbContext
+    public partial class BaseballProjectEntities : DbContext
     {
-        public BaseballProjectEntities4()
-            : base("name=BaseballProjectEntities4")
+        public BaseballProjectEntities()
+            : base("name=BaseballProjectEntities")
         {
         }
     
@@ -26,6 +26,7 @@ namespace BaseballApp.Models
         }
     
         public virtual DbSet<Player> Players { get; set; }
+        public virtual DbSet<Schedule> Schedules { get; set; }
         public virtual DbSet<stat> stats { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
     }

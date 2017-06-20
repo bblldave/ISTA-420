@@ -10,116 +10,116 @@ using BaseballApp.Models;
 
 namespace BaseballApp.Controllers
 {
-    public class PlayersController : Controller
+    public class SchedulesController : Controller
     {
         private BaseballProjectEntities db = new BaseballProjectEntities();
 
-        // GET: Players
+        // GET: Schedules
         public ActionResult Index()
         {
-            var players = db.Players.Include(p => p.stat).Include(p => p.Team1);
-            return View(players.ToList());
+            var schedules = db.Schedules.Include(s => s.Team).Include(s => s.Team3);
+            return View(schedules.ToList());
         }
 
-        // GET: Players/Details/5
-        public ActionResult Details(int? id)
+        // GET: Schedules/Details/5
+        public ActionResult Details(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = db.Players.Find(id);
-            if (player == null)
+            Schedule schedule = db.Schedules.Find(id);
+            if (schedule == null)
             {
                 return HttpNotFound();
             }
-            return View(player);
+            return View(schedule);
         }
 
-        // GET: Players/Create
+        // GET: Schedules/Create
         public ActionResult Create()
         {
-            ViewBag.playerID = new SelectList(db.stats, "PlayerID", "G");
-            ViewBag.Team = new SelectList(db.Teams, "Team1", "TeamName");
+            ViewBag.Team1 = new SelectList(db.Teams, "Team1", "TeamName");
+            ViewBag.Team2 = new SelectList(db.Teams, "Team1", "TeamName");
             return View();
         }
 
-        // POST: Players/Create
+        // POST: Schedules/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "playerID,LastName,FirstName,Position,Team")] Player player)
+        public ActionResult Create([Bind(Include = "Team1,Team2,Date,Time,Location,gameId")] Schedule schedule)
         {
             if (ModelState.IsValid)
             {
-                db.Players.Add(player);
+                db.Schedules.Add(schedule);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.playerID = new SelectList(db.stats, "PlayerID", "G", player.playerID);
-            ViewBag.Team = new SelectList(db.Teams, "Team1", "TeamName", player.Team);
-            return View(player);
+            ViewBag.Team1 = new SelectList(db.Teams, "Team1", "TeamName", schedule.Team1);
+            ViewBag.Team2 = new SelectList(db.Teams, "Team1", "TeamName", schedule.Team2);
+            return View(schedule);
         }
 
-        // GET: Players/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: Schedules/Edit/5
+        public ActionResult Edit(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = db.Players.Find(id);
-            if (player == null)
+            Schedule schedule = db.Schedules.Find(id);
+            if (schedule == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.playerID = new SelectList(db.stats, "PlayerID", "G", player.playerID);
-            ViewBag.Team = new SelectList(db.Teams, "Team1", "TeamName", player.Team);
-            return View(player);
+            ViewBag.Team1 = new SelectList(db.Teams, "Team1", "TeamName", schedule.Team1);
+            ViewBag.Team2 = new SelectList(db.Teams, "Team1", "TeamName", schedule.Team2);
+            return View(schedule);
         }
 
-        // POST: Players/Edit/5
+        // POST: Schedules/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "playerID,LastName,FirstName,Position,Team")] Player player)
+        public ActionResult Edit([Bind(Include = "Team1,Team2,Date,Time,Location,gameId")] Schedule schedule)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(player).State = EntityState.Modified;
+                db.Entry(schedule).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.playerID = new SelectList(db.stats, "PlayerID", "G", player.playerID);
-            ViewBag.Team = new SelectList(db.Teams, "Team1", "TeamName", player.Team);
-            return View(player);
+            ViewBag.Team1 = new SelectList(db.Teams, "Team1", "TeamName", schedule.Team1);
+            ViewBag.Team2 = new SelectList(db.Teams, "Team1", "TeamName", schedule.Team2);
+            return View(schedule);
         }
 
-        // GET: Players/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: Schedules/Delete/5
+        public ActionResult Delete(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = db.Players.Find(id);
-            if (player == null)
+            Schedule schedule = db.Schedules.Find(id);
+            if (schedule == null)
             {
                 return HttpNotFound();
             }
-            return View(player);
+            return View(schedule);
         }
 
-        // POST: Players/Delete/5
+        // POST: Schedules/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(long id)
         {
-            Player player = db.Players.Find(id);
-            db.Players.Remove(player);
+            Schedule schedule = db.Schedules.Find(id);
+            db.Schedules.Remove(schedule);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

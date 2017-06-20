@@ -1,16 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
-
+using BaseballApp.Models;
 namespace BaseballApp.Controllers
 {
     public class HomeController : Controller
     {
+        private BaseballProjectEntities db = new BaseballProjectEntities();
+
         public ActionResult Index()
         {
-            return View();
+            var schedules = db.Schedules.Include(s => s.Team).Include(s => s.Team3);
+            var schedules1 = schedules.ToList();
+            var q =from s in schedules1 where DateTime.Parse(s.Date) > DateTime.Now && DateTime.Parse(s.Date) < DateTime.Now.AddDays(7) select s;
+            return View(q);
         }
 
         public ActionResult About()

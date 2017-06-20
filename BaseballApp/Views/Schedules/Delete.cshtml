@@ -1,4 +1,4 @@
-﻿@model BaseballApp.Models.Player
+﻿@model BaseballApp.Models.Schedule
 
 @{
     ViewBag.Title = "Delete";
@@ -8,47 +8,47 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Player</h4>
+    <h4>Schedule</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model.Date)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LastName)
+            @Html.DisplayFor(model => model.Date)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayNameFor(model => model.Time)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FirstName)
+            @Html.DisplayFor(model => model.Time)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Position)
+            @Html.DisplayNameFor(model => model.Location)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Position)
+            @Html.DisplayFor(model => model.Location)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.stat.G)
+            @Html.DisplayNameFor(model => model.Team.TeamName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.stat.G)
+            @Html.DisplayFor(model => model.Team.TeamName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Team1.TeamName)
+            @Html.DisplayNameFor(model => model.Team3.TeamName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Team1.TeamName)
+            @Html.DisplayFor(model => model.Team3.TeamName)
         </dd>
 
     </dl>

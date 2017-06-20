@@ -151,34 +151,38 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlayersController.cs" />
+    <Compile Include="Controllers\SchedulesController.cs" />
     <Compile Include="Controllers\statsController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Baseball.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Baseball.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Baseball.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Baseball.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Baseball.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Baseball.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Player.cs">
-      <DependentUpon>RosterModels.tt</DependentUpon>
+      <DependentUpon>Baseball.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RosterModels.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RosterModels.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RosterModels.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RosterModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RosterModels.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RosterModels.edmx</DependentUpon>
+    <Compile Include="Models\Schedule.cs">
+      <DependentUpon>Baseball.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\stat.cs">
-      <DependentUpon>RosterModels.tt</DependentUpon>
+      <DependentUpon>Baseball.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Team.cs">
-      <DependentUpon>RosterModels.tt</DependentUpon>
+      <DependentUpon>Baseball.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -192,27 +196,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\RosterModels.Context.tt">
+    <Content Include="Models\Baseball.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RosterModels.edmx</DependentUpon>
-      <LastGenOutput>RosterModels.Context.cs</LastGenOutput>
+      <DependentUpon>Baseball.edmx</DependentUpon>
+      <LastGenOutput>Baseball.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\RosterModels.tt">
+    <Content Include="Models\Baseball.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RosterModels.edmx</DependentUpon>
-      <LastGenOutput>RosterModels.cs</LastGenOutput>
+      <DependentUpon>Baseball.edmx</DependentUpon>
+      <LastGenOutput>Baseball.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\RosterModels.edmx">
+    <EntityDeploy Include="Models\Baseball.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RosterModels.Designer.cs</LastGenOutput>
+      <LastGenOutput>Baseball.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\RosterModels.edmx.diagram">
-      <DependentUpon>RosterModels.edmx</DependentUpon>
+    <Content Include="Models\Baseball.edmx.diagram">
+      <DependentUpon>Baseball.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -244,6 +248,11 @@
     <Content Include="Views\Players\Details.cshtml" />
     <Content Include="Views\Players\Edit.cshtml" />
     <Content Include="Views\Players\Index.cshtml" />
+    <Content Include="Views\Schedules\Create.cshtml" />
+    <Content Include="Views\Schedules\Delete.cshtml" />
+    <Content Include="Views\Schedules\Details.cshtml" />
+    <Content Include="Views\Schedules\Edit.cshtml" />
+    <Content Include="Views\Schedules\Index.cshtml" />
     <Content Include="Views\stats\Create.cshtml" />
     <Content Include="Views\stats\Delete.cshtml" />
     <Content Include="Views\stats\Details.cshtml" />
