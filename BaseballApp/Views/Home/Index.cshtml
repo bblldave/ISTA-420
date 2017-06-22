@@ -68,12 +68,8 @@
         </div>
     </div> 
 </div>
-
-
-
 <div class="upcomingGames">
     <h2>Upcoming Games</h2>
-    
     <table class="table table-striped">
         <tr>
             <th>
@@ -88,10 +84,7 @@
             <th>
                 <p>Time</p>
             </th>
-            
-           
         </tr>
-
         @foreach (var item in Model)
         {
             <tr>
@@ -107,13 +100,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Time)
                 </td>
-                
-               
             </tr>
         }
     </table>
-
-
 </div >
 
 
