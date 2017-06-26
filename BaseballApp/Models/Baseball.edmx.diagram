@@ -13,6 +13,7 @@
         <AssociationConnector Association="BaseballProjectModel.FK_stats_Players" ManuallyRouted="false" />
         <AssociationConnector Association="BaseballProjectModel.FK_Schedule_Teams" ManuallyRouted="false" />
         <AssociationConnector Association="BaseballProjectModel.FK_Schedule_Teams1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BaseballProjectModel.User" Width="1.5" PointX="5.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

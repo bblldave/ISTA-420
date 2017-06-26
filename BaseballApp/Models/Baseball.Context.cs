@@ -29,5 +29,6 @@ namespace BaseballApp.Models
         public virtual DbSet<Schedule> Schedules { get; set; }
         public virtual DbSet<stat> stats { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
+        //public virtual DbSet<User> Users { get; set; }
     }
 }

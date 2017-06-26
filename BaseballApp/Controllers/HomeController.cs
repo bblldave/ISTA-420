@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BaseballApp.Models;
+using Microsoft.AspNet.Identity;
+
 namespace BaseballApp.Controllers
 {
     public class HomeController : Controller
@@ -33,6 +35,25 @@ namespace BaseballApp.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public string AddUser()
+        {
+            ApplicationUser user;
+            ApplicationUserStore Store = new ApplicationUserStore(new ApplicationDbContext());
+            ApplicationUserManager userManager = new ApplicationUserManager(Store);
+            user = new ApplicationUser
+            {
+                UserName = "TestUser",
+                Email = "TestUser@test.com"
+            };
+
+            var result = userManager.Create(user);
+            if (!result.Succeeded)
+            {
+                return result.Errors.First();
+            }
+            return "User Added";
         }
     }
 }
