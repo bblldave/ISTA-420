@@ -11,7 +11,7 @@ namespace BaseballApp.Controllers
 {
     public class HomeController : Controller
     {
-        private BaseballProjectEntities db = new BaseballProjectEntities();
+        private BaseballProjectEntities1 db = new BaseballProjectEntities1();
 
         public ActionResult Index()
         {

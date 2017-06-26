@@ -20,7 +20,7 @@ namespace BaseballApp.Models
         public string Position { get; set; }
         public string Team { get; set; }
     
-        public virtual stat stat { get; set; }
         public virtual Team Team1 { get; set; }
+        public virtual stat stat { get; set; }
     }
 }

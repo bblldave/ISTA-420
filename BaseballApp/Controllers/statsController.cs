@@ -12,7 +12,7 @@ namespace BaseballApp.Controllers
 {
     public class statsController : Controller
     {
-        private BaseballProjectEntities db = new BaseballProjectEntities();
+        private BaseballProjectEntities1 db = new BaseballProjectEntities1();
 
         // GET: stats
         public ActionResult Index()

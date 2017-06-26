@@ -13,10 +13,10 @@ namespace BaseballApp.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BaseballProjectEntities : DbContext
+    public partial class BaseballProjectEntities1 : DbContext
     {
-        public BaseballProjectEntities()
-            : base("name=BaseballProjectEntities")
+        public BaseballProjectEntities1()
+            : base("name=BaseballProjectEntities1")
         {
         }
     

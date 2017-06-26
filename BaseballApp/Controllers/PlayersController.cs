@@ -12,12 +12,12 @@ namespace BaseballApp.Controllers
 {
     public class PlayersController : Controller
     {
-        private BaseballProjectEntities db = new BaseballProjectEntities();
+        private BaseballProjectEntities1 db = new BaseballProjectEntities1();
 
         // GET: Players
         public ActionResult Index()
         {
-            var players = db.Players.Include(p => p.stat).Include(p => p.Team1);
+            var players = db.Players.Include(p => p.Team1).Include(p => p.stat);
             return View(players.ToList());
         }
 
@@ -39,8 +39,8 @@ namespace BaseballApp.Controllers
         // GET: Players/Create
         public ActionResult Create()
         {
-            ViewBag.playerID = new SelectList(db.stats, "PlayerID", "G");
             ViewBag.Team = new SelectList(db.Teams, "Team1", "TeamName");
+            ViewBag.playerID = new SelectList(db.stats, "PlayerID", "G");
             return View();
         }
 
@@ -58,8 +58,8 @@ namespace BaseballApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.playerID = new SelectList(db.stats, "PlayerID", "G", player.playerID);
             ViewBag.Team = new SelectList(db.Teams, "Team1", "TeamName", player.Team);
+            ViewBag.playerID = new SelectList(db.stats, "PlayerID", "G", player.playerID);
             return View(player);
         }
 
@@ -75,8 +75,8 @@ namespace BaseballApp.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.playerID = new SelectList(db.stats, "PlayerID", "G", player.playerID);
             ViewBag.Team = new SelectList(db.Teams, "Team1", "TeamName", player.Team);
+            ViewBag.playerID = new SelectList(db.stats, "PlayerID", "G", player.playerID);
             return View(player);
         }
 
@@ -93,8 +93,8 @@ namespace BaseballApp.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.playerID = new SelectList(db.stats, "PlayerID", "G", player.playerID);
             ViewBag.Team = new SelectList(db.Teams, "Team1", "TeamName", player.Team);
+            ViewBag.playerID = new SelectList(db.stats, "PlayerID", "G", player.playerID);
             return View(player);
         }
 

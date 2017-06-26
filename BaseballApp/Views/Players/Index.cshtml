@@ -21,10 +21,10 @@
             @Html.DisplayNameFor(model => model.Position)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.stat.G)
+            @Html.DisplayNameFor(model => model.Team1.TeamName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Team1.TeamName)
+            @Html.DisplayNameFor(model => model.stat.G)
         </th>
         <th></th>
     </tr>
@@ -41,10 +41,10 @@
             @Html.DisplayFor(modelItem => item.Position)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.stat.G)
+            @Html.DisplayFor(modelItem => item.Team1.TeamName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Team1.TeamName)
+            @Html.DisplayFor(modelItem => item.stat.G)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.playerID }) |
