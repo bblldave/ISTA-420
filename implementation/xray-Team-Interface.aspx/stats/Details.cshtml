@@ -1,0 +1,154 @@
+﻿@model BaseballApp.Models.stat
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>stat</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.G)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.G)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.R)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.R)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.H)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.H)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondBase)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecondBase)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThirdBase)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThirdBase)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RBI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RBI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.K)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.K)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AVG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AVG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SLG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SLG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OBP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OBP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OPS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OPS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Player.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Player.LastName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PlayerID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

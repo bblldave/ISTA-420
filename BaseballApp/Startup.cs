@@ -80,6 +80,14 @@ namespace BaseballApp
                 roleManager.Create(role);
 
             }
+            //create User role
+            if(!roleManager.RoleExists("User"))
+            {
+                var role = new IdentityRole();
+                role.Name = "Player";
+                roleManager.Create(role);
+            }
+
         }
     }
 }

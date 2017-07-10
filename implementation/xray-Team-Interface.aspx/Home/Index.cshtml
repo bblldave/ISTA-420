@@ -1,0 +1,144 @@
+﻿@model IEnumerable<BaseballApp.Models.Schedule>
+
+
+
+
+<div class="jumbotron"></div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="headingPic">
+                <img src="~/Content/rsz_baseballteam.jpg" alt="Baseball Team" style="width:100%">
+            </div>
+            <div class="container1">
+                <h1>Teams</h1>
+                <p class="title1">Homerun League has many teams that play in a tournament style bracket. Multiple games per week!</p>
+                <p><a class="btn btn-primary" href="~/Teams/Index"> View Teams &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="headingPic">
+                <img src="~/Content/rsz_tournamentbracket.jpg" alt="Tournament Bracket" style="width:100%">
+            </div>
+            <div class="container1">
+                <h1>Schedule</h1>
+                <p class="title1">
+                    View the schedule for the entire league. Find out when your favorite teams are playing!
+                </p>
+                <p><a class="btn btn-primary" href="~/Schedules/Index"> View Schedule &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="headingPic">
+                <img src="~/Content/rsz_baseballglove.jpg" alt="Baseball Glove" style="width:100%">
+            </div>
+            <div class="container1">
+                <h1>Apply Now!</h1>
+                <p class="title1">
+                    Interested in playing for one of our teams? If so click below to get added to the roster.
+                </p>
+                <p><a class="btn btn-primary" href="~/Players/Create"> Apply Now! &raquo;</a></p>
+            </div>
+        </div>
+    </div> 
+</div>
+<div class="upcomingGames">
+    <h2>Upcoming Games</h2>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                <p>Away</p>
+            </th>
+            <th>
+               <p>Home</p>
+            </th>
+            <th>
+                <p>Date</p>
+            </th>
+            <th>
+                <p>Time</p>
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Team.TeamName)
+                </td>
+                <td>
+                   @Html.DisplayFor(modelItem => item.Team3.TeamName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+            </tr>
+        }
+    </table>
+</div >
+
+
+
+
+
+
+
+
+@*<div class="month">
+    <ul>
+        <li class="prev">&#10094;</li>
+        <li class="next">&#10095;</li>
+        <li>
+            August<br>
+            <span style="font-size:18px">2016</span>
+        </li>
+    </ul>
+</div>
+<ul class="weekdays">
+    <li>Mo</li>
+    <li>Tu</li>
+    <li>We</li>
+    <li>Th</li>
+    <li>Fr</li>
+    <li>Sa</li>
+    <li>Su</li>
+</ul>
+<ul class="days">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li><span class="active">10</span></li>
+    <li>11</li>
+    <li>12</li>
+    <li>13</li>
+    <li>14</li>
+    <li>15</li>
+    <li>16</li>
+    <li>17</li>
+    <li>18</li>
+    <li>19</li>
+    <li>20</li>
+    <li>21</li>
+    <li>22</li>
+    <li>23</li>
+    <li>24</li>
+    <li>25</li>
+    <li>26</li>
+    <li>27</li>
+    <li>28</li>
+    <li>29</li>
+    <li>30</li>
+    <li>31</li>
+</ul>*@
