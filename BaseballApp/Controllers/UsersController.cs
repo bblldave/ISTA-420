@@ -16,6 +16,7 @@ namespace BaseballApp.Controllers
     {
         public enum SignInRole { Admin, User, Player, Coach, NotAuthorized};
         ApplicationDbContext context;
+
         public UsersController()
         {
             context = new ApplicationDbContext();
@@ -149,16 +150,27 @@ namespace BaseballApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(ApplicationUser user)
+        public ActionResult Edit(ApplicationUser user, string roleId)
         {
             
             if (ModelState.IsValid)
             {
-               
+                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+                var olduser = context.Users.SingleOrDefault(u => u.Id == user.Id);
+                if(olduser.Roles.Count() == 0)
+                {
+                    UserManager.AddToRole(user.Id, "User");
+                }
+                var oldRoleId = olduser.Roles.SingleOrDefault().RoleId;
+                var oldRoleName = context.Roles.SingleOrDefault(r => r.Id == oldRoleId).Name;
+                var newRoleName = context.Roles.SingleOrDefault(r => r.Id == roleId).Name;
+                if(oldRoleName != newRoleName)
+                {
+                    UserManager.RemoveFromRole(user.Id, oldRoleName);
+                    UserManager.AddToRole(user.Id, newRoleName);
+                }
+                return RedirectToAction("Index");
             }
-
-            
-
             return View(user);
         }
 
