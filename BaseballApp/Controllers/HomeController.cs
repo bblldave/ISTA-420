@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace BaseballApp.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         private BaseballProjectEntities1 db = new BaseballProjectEntities1();

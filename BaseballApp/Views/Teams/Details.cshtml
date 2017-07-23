@@ -20,6 +20,9 @@
             <th>
                 Position
             </th>
+            <th>
+
+            </th>
         </tr>
 
         @foreach (var player in ViewBag.Players)
@@ -35,6 +38,9 @@
                     @*@Html.ActionLink("Edit", "Edit", new { id=item.Team1 })*@
                     @player.Position
                     @*@Html.ActionLink("Delete", "Delete", new { id=item.Team1 })*@
+                </td>
+                <td>
+                    @Html.ActionLink("View stats", "Details", "Players", new { id = player.playerID }, null)
                 </td>
             </tr>
         }

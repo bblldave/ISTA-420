@@ -54,6 +54,7 @@ namespace BaseballApp.Controllers
             message.IsBodyHtml = true;
 
             SmtpServer.Port = 587;
+            //Update with username and password for the smtp server
             SmtpServer.Credentials = new System.Net.NetworkCredential("username", "password");
             SmtpServer.EnableSsl = true;
 

@@ -45,23 +45,24 @@ namespace BaseballApp.App_Start
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // Uncomment the following lines to enable logging in with third party login providers 
-            //app.UseMicrosoftAccountAuthentication( 
-            //    clientId: "", 
-            //    clientSecret: ""); 
+            //app.UseMicrosoftAccountAuthentication(
+            //    clientId: "",
+            //    clientSecret: "");
 
-            //app.UseTwitterAuthentication( 
-            //   consumerKey: "", 
-            //   consumerSecret: ""); 
+            //app.UseTwitterAuthentication(
+            //   consumerKey: "",
+            //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication( 
-            //   appId: "", 
-            //   appSecret: ""); 
+            //app.UseFacebookAuthentication(
+            //   appId: "1885778535008296",
+            //   appSecret: "cda5d2bdaa0b1ac39a2e9d0b655d22b7");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions() 
-            //{ 
-            //    ClientId = "", 
-            //    ClientSecret = "" 
-            //}); 
+            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            //{
+            //    ClientId = "",
+            //    ClientSecret = ""
+            //});
+            
         }
     }
 }

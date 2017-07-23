@@ -21,6 +21,9 @@
             <th>
 
             </th>
+            <th>
+
+            </th>
         </tr>
 
         @foreach (var item in Model)
@@ -33,7 +36,14 @@
                     @Html.DisplayFor(modelItem => item.City)
                 </td>
                 <td>
-                    @*@Html.ActionLink("Edit", "Edit", new { id=item.Team1 })*@
+                    @if (User.IsInRole("Coach"))
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Team1 })
+                    }
+                </td>
+                <td>
+                   
+                    
                     @Html.ActionLink("Details", "Details", new { id = item.Team1 })
                     @*@Html.ActionLink("Delete", "Delete", new { id=item.Team1 })*@
                 </td>
@@ -41,5 +51,9 @@
         }
 
     </table>
+
 </div>
+
+
+
 
